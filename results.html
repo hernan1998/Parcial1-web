@@ -17,8 +17,7 @@
     />
     <link rel="StyleSheet" href="StyleR.css" type="text/css" />
 
-
-    <title >Users List</title>
+    <title>User info</title>
   </head>
   <body>
     <script
@@ -36,7 +35,64 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
-    <h3 class="text-center" style="padding-top: 50px;">Preguntas</h3>
-    
+
+    <div id="main-container">
+      <div class="row no-gutters">
+        <div class="col">
+          <img id="user-img" src="assets/user.png" />
+        </div>
+        <div class="col-8">
+          <h1>User's Name</h1>
+          <a
+            >Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            Laudantium numquam veritatis, dicta voluptatibus laboriosam iure? Ut
+            aut non, possimus rerum officia corrupti. Amet voluptates nam est in
+            unde natus eum!</a
+          >
+        </div>
+      </div>
+      <form id="user-form">
+        <div class="form-group row">
+          <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+          <div class="col-sm-10">
+            <input
+              type="text"
+              readonly
+              class="form-control"
+              id="staticEmail"
+              value="user'semail@example.com"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Address</label>
+          <div class="col-sm-10">
+            <input
+              type="text"
+              readonly
+              class="form-control"
+              value="5934 Depaul Dr"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Phone number</label>
+          <div class="col-sm-10">
+            <input
+              type="text"
+              readonly
+              class="form-control"
+              value="(474)-122-2571"
+            />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Birthday</label>
+          <div class="col-sm-10">
+            <input type="text" readonly class="form-control" value="2/4/1964" />
+          </div>
+        </div>
+      </form>
+    </div>
   </body>
 </html>
