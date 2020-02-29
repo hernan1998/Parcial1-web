@@ -1,10 +1,31 @@
-#main-container {
-  padding-left: 150px;
-  padding-right: 150px;
+#main-container-sm {
+  position: relative;
+  padding-left: 50px;
+  padding-right: 50px;
   margin-top: 200px;
+  margin-bottom: 200px;
+}
+#main-container-md {
+  position: relative;
+  padding-left: 300px;
+  padding-right: 300px;
+  margin-top: 200px;
+  margin-bottom: 200px;
+}
+#login{
+  background-color: rgba(0, 0, 0, 0.692);
+  align-self: auto;
 }
 #users-container {
   padding-left: 150px;
   padding-right: 150px;
   margin-top: 200px;
+}
+body{
+  background-color: rgba(20, 45, 185, 0.87);
+  background-image: url(assets/login.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
 }

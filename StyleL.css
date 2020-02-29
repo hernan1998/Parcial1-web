@@ -1,0 +1,9 @@
+body{
+  background-image: url(assets/hi.jfif);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.card{
+  background-color: rgba(21, 168, 194, 0.692);
+}

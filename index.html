@@ -37,10 +37,10 @@
       crossorigin="anonymous"
     ></script>
 
-    <div id="main-container">
-      <div class="card border-secondary">
+    <div id="main-container-sm" class="sm d-md-none">
+      <div id="login" class="card border-secondary ">
         <div class="card-body">
-          <h5 class="card-tittle text-center" style="padding-bottom: 20px;">
+          <h5 class="card-tittle text-center" style="padding-bottom: 20px; color: white;">
             Login
           </h5>
           <div class="input-group mb-3">
@@ -49,9 +49,26 @@
           <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Password" />
           </div>
-          <a href="List.html" class="btn btn-outline-secondary">Login</a>
+          <a href="List.html" class="btn btn-outline-light">Login</a>
         </div>
       </div>
-    </div>
+
+
+    </div><div id="main-container-md" class="d-none d-md-block">
+        <div id="login" class="card border-secondary ">
+          <div class="card-body">
+            <h5 class="card-tittle text-center" style="padding-bottom: 20px; color: white;">
+              Login
+            </h5>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Username" />
+            </div>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Password" />
+            </div>
+            <a href="List.html" class="btn btn-outline-light">Login</a>
+          </div>
+        </div>
+      </div>
   </body>
 </html>
