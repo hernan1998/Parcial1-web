@@ -1,7 +1,22 @@
+body {
+  background-image: url(assets/dark-spade.png);
+  background-position: center center;
+  background-attachment: scroll;
+}
+body:before {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.514);
+}
 #user-img {
-  width: 300px;
-  height: 200px;
-  padding-left: 30px;
+  width: auto;
+  height: auto;
+  max-width: 600px;
+  max-height: 300px;
 }
 #main-container {
   margin-top: 50px;
