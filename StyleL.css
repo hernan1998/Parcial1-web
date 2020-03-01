@@ -38,8 +38,9 @@ body:before {
   padding-left: 50px;
   padding-top: 15px;
 }
-#title {
+#tittle {
   padding-top: 50px;
+  color: white;
 }
 .card-img-top {
   width: 100px;
