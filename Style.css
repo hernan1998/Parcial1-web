@@ -1,17 +1,23 @@
-#main-container-sm {
-  position: relative;
-  padding-left: 50px;
-  padding-right: 50px;
-  margin-top: 200px;
-  margin-bottom: 200px;
+@media (max-width:480px){
+  #main-container{
+    position: relative;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-top: 200px;
+    margin-bottom: 200px;
+  }
 }
-#main-container-md {
-  position: relative;
-  padding-left: 300px;
-  padding-right: 300px;
-  margin-top: 200px;
-  margin-bottom: 200px;
+@media (min-width:768px){
+  #main-container{
+    position: relative;
+    padding-left: 300px;
+    padding-right: 300px;
+    margin-top: 200px;
+    margin-bottom: 200px;
+  }
 }
+
+
 #login {
   background-color: rgba(0, 0, 0, 0.692);
   align-self: auto;
