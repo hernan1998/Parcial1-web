@@ -5,6 +5,12 @@
     padding-left: 50px;
     padding-right: 50px;
   }
+  #btn-container {
+
+    padding-top: 15px;
+    padding-bottom: 25px;
+    text-align: center;
+  }
 }
 @media (min-width:768px){
   .card-deck {
@@ -12,6 +18,10 @@
     padding-bottom: 50px;
     padding-left: 50px;
     padding-right: 50px;
+  }
+  #btn-container {
+    padding-left: 50px;
+    padding-top: 15px;
   }
 }
 body {
@@ -34,10 +44,7 @@ body:before {
   padding-bottom: 15px;
 }
 
-#btn-container {
-  padding-left: 50px;
-  padding-top: 15px;
-}
+
 #tittle {
   padding-top: 50px;
   color: white;
