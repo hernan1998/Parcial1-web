@@ -30,6 +30,10 @@ body:before {
 .form-control {
   max-width: 500px;
 }
-h1, h5 {
+h1,
+h5 {
   padding-bottom: 15px;
+}
+.progress-bar {
+  width: 80%;
 }
