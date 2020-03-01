@@ -20,6 +20,17 @@ body:before {
 .card-deck {
   padding-top: 30px;
   padding-bottom: 50px;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+#btn-container {
+  padding-left: 50px;
+  padding-top: 15px;
+}
+#title {
+  padding-top: 50px;
+}
+.card-img-top {
+  width: 100px;
+  height: 100px;
 }
