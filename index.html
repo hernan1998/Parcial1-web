@@ -20,7 +20,7 @@
     <title>Login Page</title>
   </head>
 
-  <body>
+  <body class="text-center">
     <script src="/__/firebase/7.9.3/firebase-app.js"></script>
     <script src="/__/firebase/init.js"></script>
     <script
@@ -39,21 +39,40 @@
       crossorigin="anonymous"
     ></script>
 
-    <div id="main-container">
-      <div id="login" class="card border-secondary ">
-        <div class="card-body">
-          <h5 class="card-tittle text-center">
-            Login
-          </h5>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Username" />
-          </div>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Password" />
-          </div>
-          <a href="List.html" class="btn btn-outline-light">Login</a>
-        </div>
-      </div>
-    </div>
+    <form class="form-signin">
+      <img
+        class="mb-4"
+        src="assets/manufacture.png"
+        alt=""
+        width="72"
+        height="72"
+      />
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input
+        type="email"
+        id="inputEmail"
+        class="form-control"
+        placeholder="Email address"
+        required
+        autofocus
+      />
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input
+        type="password"
+        id="inputPassword"
+        class="form-control"
+        placeholder="Password"
+        required
+      />
+      <button type="submit" class="btn btn-outline-primary btn-lg">
+        Sign in
+      </button>
+      <button class="btn btn-lg btn-primary" type="submit">
+        Log in
+      </button>
+
+      <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
+    </form>
   </body>
 </html>
