@@ -67,12 +67,7 @@
 
       <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
     </form>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase.js"></script>
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-analytics.js"></script>
     <div
       class="modal fade"
       id="exampleModal"
@@ -142,7 +137,13 @@
 
     <!------------------ Scripts ------------------------>
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
-
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"
+    />
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -175,7 +176,7 @@
     </script>
     <script>
       $("#login").click(function () {
-        window.location = "List.html";
+        //window.location = "List.html";
         event.preventDefault();
         username = $("#inputEmail").val();
         password = $("#inputPassword").val();
