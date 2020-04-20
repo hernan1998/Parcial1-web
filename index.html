@@ -216,8 +216,8 @@
       });
       $("#registrarme").click(function () {
         event.preventDefault();
-        username = $("#inputEmail").val();
-        password = $("#inputPassword").val();
+        username = $("#emailUser").val();
+        password = $("#passUser").val();
         firebase
           .auth()
           .createUserWithEmailAndPassword(username, password)
@@ -243,9 +243,9 @@
               .database()
               .ref("users/" + uid)
               .set({
-                email: $("#inputEmail").val(),
-                name: "jhon",
-                password: $("#inputPassword").val(),
+                email: $("#emailUser").val(),
+                name: $("#nameUser").val(),
+                password: $("#passUser").val(),
               });
           }
         });
