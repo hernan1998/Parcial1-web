@@ -134,17 +134,11 @@
       </div>
     </div>
 
-    <!------------------ Scripts ------------------------>
+    <!------------------- Scripts Config ---------------------------------------------->
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
-    <!--script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script-->
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css"
-    />
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -160,6 +154,8 @@
       integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="sweetalert2.all.min.js"></script>
     <script>
       // Your web app's Firebase configuration
       var firebaseConfig = {
@@ -175,9 +171,9 @@
       firebase.initializeApp(firebaseConfig);
       //firebase.analytics();
     </script>
+    <!-------------------Script's Functions -------------------------------------------->
     <script>
       $("#login").click(function () {
-        //window.location = "List.html";
         event.preventDefault();
         username = $("#inputEmail").val();
         password = $("#inputPassword").val();
