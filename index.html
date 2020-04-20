@@ -140,7 +140,8 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
-    <!--script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script-->
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    
     <link
       type="text/css"
       rel="stylesheet"
@@ -191,24 +192,35 @@
           });
         firebase.auth().onAuthStateChanged(function (user) {
           if (user) {
+            console.log(firebase.auth().currentUser.uid);
             firebase
               .auth()
               .currentUser.getIdToken()
               .then(function (idToken) {
                 localStorage.auth = idToken;
+                console.log(idToken);
                 localStorage.uid = firebase.auth().currentUser.uid;
 
                 uid = firebase.auth().currentUser.uid;
+
                 firebase
+              .database()
+              .ref("users/" + uid)
+              .set({
+                email: $("#emailUser").val(),
+                name: $("#nameUser").val(),
+                password: $("#passUser").val(),
+              });
+                /*firebase
                   .database()
                   .ref("users/" + uid)
                   .update({
                     email: $("#inputEmail").val(),
                     name: "jhon",
                     password: $("#inputPassword").val(),
-                  });
+                  });*/
               });
-            window.location = "List.html";
+           
           } else {
             Swal.fire({
               icon: "error",
