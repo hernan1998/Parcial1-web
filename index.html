@@ -61,9 +61,12 @@
 
       <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
     </form>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase.js"></script>
 
-    <!------------------ Scripts ------------------------>
-    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-analytics.js"></script>
 
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -93,6 +96,7 @@
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
+      //firebase.analytics();
     </script>
     <script>
       $("#login").click(function () {
@@ -115,6 +119,16 @@
               .then(function (idToken) {
                 localStorage.auth = idToken;
                 localStorage.uid = firebase.auth().currentUser.uid;
+
+                uid = firebase.auth().currentUser.uid;
+                firebase
+                  .database()
+                  .ref("users/" + uid)
+                  .update({
+                    email: $("#inputEmail").val(),
+                    name: "jhon",
+                    password: $("#inputPassword").val(),
+                  });
               });
             window.location = "List.html";
           } else {
@@ -123,6 +137,46 @@
               title: "Usuario y/o contraseña son incorrectos",
             });
           }
+        });
+      });
+      $("#registrarme").click(function () {
+        event.preventDefault();
+        username = $("#inputEmail").val();
+        password = $("#inputPassword").val();
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(username, password)
+          .catch(function (error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorCode);
+            console.log(errorMessage);
+          });
+        // autenticacion con firebase
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(username, password)
+          .catch(function (error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+          });
+
+        firebase.auth().onAuthStateChanged(function (user) {
+          if (user) {
+            uid = firebase.auth().currentUser.uid;
+            firebase
+              .database()
+              .ref("users/" + uid)
+              .set({
+                email: $("#inputEmail").val(),
+                name: "jhon",
+                password: $("#inputPassword").val(),
+              });
+          }
+        });
+        Swal.fire({
+          icon: "success",
+          title: "usuario registrado, ya puede ingresar",
         });
       });
     </script>
