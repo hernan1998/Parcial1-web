@@ -67,7 +67,6 @@
 
       <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
     </form>
-
     <div
       class="modal fade"
       id="exampleModal"
@@ -217,8 +216,8 @@
       });
       $("#registrarme").click(function () {
         event.preventDefault();
-        username = $("#emailUser").val();
-        password = $("#passUser").val();
+        username = $("#inputEmail").val();
+        password = $("#inputPassword").val();
         firebase
           .auth()
           .createUserWithEmailAndPassword(username, password)
@@ -244,9 +243,9 @@
               .database()
               .ref("users/" + uid)
               .set({
-                email: $("#emailUser").val(),
-                name: $("#nameUser").val(),
-                password: $("#passUser").val(),
+                email: $("#inputEmail").val(),
+                name: "jhon",
+                password: $("#inputPassword").val(),
               });
           }
         });
