@@ -185,25 +185,43 @@
           });
         firebase.auth().onAuthStateChanged(function (user) {
           if (user) {
+            console.log(firebase.auth().currentUser.uid);
             firebase
               .auth()
               .currentUser.getIdToken()
               .then(function (idToken) {
                 localStorage.auth = idToken;
+                console.log(idToken);
                 localStorage.uid = firebase.auth().currentUser.uid;
 
                 uid = firebase.auth().currentUser.uid;
+<<<<<<< HEAD
                 console.log(uid);
+=======
+
+>>>>>>> 86cb00dfa2cee24d6cf0a082c1aa16325b2911b9
                 firebase
+              .database()
+              .ref("users/" + uid)
+              .set({
+                email: $("#emailUser").val(),
+                name: $("#nameUser").val(),
+                password: $("#passUser").val(),
+              });
+                /*firebase
                   .database()
                   .ref("users/" + uid)
                   .update({
                     email: $("#inputEmail").val(),
                     name: "jhon",
                     password: $("#inputPassword").val(),
-                  });
+                  });*/
               });
+<<<<<<< HEAD
             //window.location = "List.html";
+=======
+           
+>>>>>>> 86cb00dfa2cee24d6cf0a082c1aa16325b2911b9
           } else {
             Swal.fire({
               icon: "error",
