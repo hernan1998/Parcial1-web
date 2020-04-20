@@ -155,7 +155,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="sweetalert2.all.min.js"></script>
     <script>
       // Your web app's Firebase configuration
       var firebaseConfig = {
@@ -194,6 +193,7 @@
                 localStorage.uid = firebase.auth().currentUser.uid;
 
                 uid = firebase.auth().currentUser.uid;
+                console.log(uid);
                 firebase
                   .database()
                   .ref("users/" + uid)
@@ -203,7 +203,7 @@
                     password: $("#inputPassword").val(),
                   });
               });
-            window.location = "List.html";
+            //window.location = "List.html";
           } else {
             Swal.fire({
               icon: "error",
