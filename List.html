@@ -61,9 +61,10 @@
               href="#"
               >Add user</a
             >
-            <a class="dropdown-item" href="#">Another action</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Delete user</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Update user</a>
           </div>
         </li>
       </ul>
@@ -159,6 +160,9 @@
               title: "Error to Log Out",
             });
           });
+      });
+      $(".modal").on("hidden.bs.modal", function (e) {
+        $(this).removeData();
       });
     </script>
     <!------------------------End Script's ------------------------------------>
@@ -358,16 +362,17 @@
         const companymail = emailaux;
         const companyuser = uidaux;
         const companypass = passaux;
-        /* var suma = firebase
+        var sum;
+        var suma = firebase
           .database()
           .ref("users/" + companyuser + "/operators");
         suma.on("value", function (snapshot) {
-          var sum = parseInt(snapshot.val()) + 1;
-          return firebase
-            .database()
-            .ref("users/" + companyuser)
-            .update({ operators: sum });
-        }); */
+          sum = parseInt(snapshot.val()) + 1;
+        });
+        firebase
+          .database()
+          .ref("users/" + companyuser)
+          .update({ operators: sum });
         firebase
           .auth()
           .createUserWithEmailAndPassword(username, password)
