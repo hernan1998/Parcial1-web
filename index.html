@@ -235,8 +235,8 @@
       });
       $("#registrarme").click(function () {
         event.preventDefault();
-        username = $("#inputEmail").val();
-        password = $("#inputPassword").val();
+        username = $("#emailUser").val();
+        password = $("#passUser").val();
         firebase
           .auth()
           .createUserWithEmailAndPassword(username, password)
@@ -262,15 +262,26 @@
               .database()
               .ref("users/" + uid)
               .set({
-                email: $("#inputEmail").val(),
-                name: "jhon",
-                password: $("#inputPassword").val(),
+                legalname: $("#nameUser").val(),
+                documentnumber: $("#documenttype").val(),
+                email: $("#emailUser").val(),
+                name: $("#nameCompany").val(),
+                phone: $("#phone").val(),
+                password: $("#passUser").val(),
+                type: "0",
               });
           }
         });
         Swal.fire({
+          title: "Company created",
           icon: "success",
-          title: "usuario registrado, ya puede ingresar",
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, Log me in!",
+        }).then((result) => {
+          if (result.value) {
+            window.location = "List.html";
+          }
         });
       });
     </script>

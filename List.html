@@ -20,7 +20,7 @@
     <title>Users List</title>
   </head>
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Company Name</a>
+    <a class="navbar-brand" id="companyname" href="#">Company Name</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -100,6 +100,18 @@
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       //firebase.analytics();
+    </script>
+    <script>
+      firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+          uid = firebase.auth().currentUser.uid;
+          var cname = firebase.database().ref("users/" + uid + "/name");
+          cname.on("value", function (snapshot) {
+            document.getElementById("companyname").innerHTML = snapshot.val();
+          });
+        } else {
+        }
+      });
     </script>
     <script>
       $("#logout").click(function () {
