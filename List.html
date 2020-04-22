@@ -439,7 +439,7 @@
               <div class="form-group">
                 <label for="formGroupExampleInput2">Question 3</label>
                 <input
-                  type="password"
+                  type="text"
                   class="form-control"
                   id="q3"
                   placeholder="Question"
@@ -457,7 +457,7 @@
               <div class="form-group">
                 <label for="formGroupExampleInput2">Question 4</label>
                 <input
-                  type="password"
+                  type="text"
                   class="form-control"
                   id="q4"
                   placeholder="Question"
@@ -475,7 +475,7 @@
               <div class="form-group">
                 <label for="formGroupExampleInput2">Question 5</label>
                 <input
-                  type="password"
+                  type="text"
                   class="form-control"
                   id="q5"
                   placeholder="Question"
@@ -495,7 +495,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Create!</button>
+            <button id="createquetion" type="button" class="btn btn-primary">Create!</button>
           </div>
         </div>
       </div>
@@ -604,6 +604,27 @@
               icon: "error",
               title: "Usuario y/o contraseña son incorrectos",
             });
+        });
+      });
+      $("#createquetion").click(function(){
+        return firebase.database().ref('cuestionarios/' + uidaux).once('value').then(function(snapshot) {
+          var listQ = snapshot.val();
+          var tam = Object.keys(listQ).length;
+          tam = parseInt(tam) + 1;
+          tam = tam + "";
+          console.log(tam);
+          firebase.database().ref("cuestionarios/"+uidaux+ "/cuestionario"+tam).set({
+            p1: $("#q1").val(),
+            p2: $("#q2").val(),
+            p3: $("#q3").val(),
+            p4: $("#q4").val(),
+            p5: $("#q5").val(),
+            val1: $("#val1").val(),
+            val2: $("#val2").val(),
+            val3: $("#val3").val(),
+            val4: $("#val4").val(),
+            val5: $("#val5").val(),
+          });
         });
       });
     </script>
