@@ -182,7 +182,7 @@
       </div>
       <div id="userslist" class="my-3 p-3 bg-white rounded shadow-sm">
         <h6 class="border-bottom border-gray pb-2 mb-0">Users</h6>
-        <div class="media text-muted pt-3">
+        <div id="useritem" class="media text-muted pt-3">
           <svg
             class="bd-placeholder-img mr-2 rounded"
             width="32"
@@ -201,7 +201,7 @@
             <div
               class="d-flex justify-content-between align-items-center w-100"
             >
-              <strong class="text-gray-dark">Full Name</strong>
+              <strong class="text-gray-dark item-user">Full Name</strong>
               <a href="results.html">See more</a>
             </div>
             <span class="d-block"
@@ -272,7 +272,7 @@
         </div>
       </div>
     </main>
-    <!------------------------------ Modal popup ----------------------------->
+    <!------------------------------ Register new user Modal popup ----------------------------->
     <div
       class="modal fade"
       id="staticBackdrop"
@@ -356,6 +356,12 @@
     </div>
 
     <script>
+      var itm = document.getElementById("useritem");
+      var cln = itm.cloneNode(true);
+      document.getElementById("userslist").appendChild(cln);
+      const demoClasses = document.querySelectorAll(".item-user");
+      demoClasses[0].textContent = "Modified";
+
       $("#registeruser").click(function () {
         username = $("#useremail").val();
         password = $("#userpassword").val();
