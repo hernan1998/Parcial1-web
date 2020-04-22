@@ -151,11 +151,6 @@
 
               } else {
               }
-
-              function infouser(){
-                
-                
-              }
               function createusers(val){
                 var itm = document.getElementById("useritem");
                 //console.log(val);
@@ -402,12 +397,6 @@
 
     <!----------------------------- Script's Before ----------------------------------------------->
     <script>
-      var itm = document.getElementById("useritem");
-      var cln = itm.cloneNode(true);
-      document.getElementById("userslist").appendChild(cln);
-      const demoClasses = document.querySelectorAll(".item-user");
-      demoClasses[0].textContent = "Modified";
-
       $("#registeruser").click(function (){
         username = $("#useremail").val();
         password = $("#userpassword").val();
