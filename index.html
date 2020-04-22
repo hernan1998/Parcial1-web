@@ -212,6 +212,10 @@
           .catch(function (error) {
             var errorCode = error.code;
             var errorMessage = error.message;
+            Swal.fire({
+              icon: "error",
+              title: "Usuario y/o contraseña son incorrectos",
+            });
           });
         firebase.auth().onAuthStateChanged(function (user) {
           if (user) {
@@ -224,16 +228,12 @@
 
                 uid = firebase.auth().currentUser.uid;
               });
-              Swal.fire({
+            Swal.fire({
               icon: "success",
               title: "login success",
             });
             window.location = "List.html";
           } else {
-            Swal.fire({
-              icon: "error",
-              title: "Usuario y/o contraseña son incorrectos",
-            });
           }
         });
       });

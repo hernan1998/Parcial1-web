@@ -62,7 +62,13 @@
               >Add user</a
             >
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Delete user</a>
+            <a
+              class="dropdown-item"
+              data-toggle="modal"
+              data-target="#deleteModal"
+              href="#"
+              >Delete user</a
+            >
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Update user</a>
           </div>
@@ -354,7 +360,63 @@
         </div>
       </div>
     </div>
+    <!------------------------------ Delete user Modal popup ----------------------------------->
+    <div
+      class="modal fade"
+      id="deleteModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete Operator</h5>
+          </div>
+          <div class="modal-body">
+            <p>
+              To delete de operator you may have access to the email and
+              password.
+            </p>
+            <form>
+              <div class="form-group">
+              <div class="form-group">
+                <label for="formGroupExampleInput2">Operator email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="useremaildel"
+                  placeholder="Email"
+                />
+              </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput2">Operator Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="userpassworddel"
+                  placeholder="Password"
+                />
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" id="btndeleteuser" class="btn btn-primary">
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!----------------------------- Script's Before ----------------------------------------------->
     <script>
       var itm = document.getElementById("useritem");
       var cln = itm.cloneNode(true);
@@ -429,6 +491,31 @@
             var errorCode = error.code;
             var errorMessage = error.message;
           });
+      });
+      $("#btndeleteuser").click(function(){
+        username = $("#useremaildel").val();
+        password = $("#userpassworddel").val();
+        const companymaild = emailaux;
+        const companyuserd = uidaux;
+        const companypassd = passaux;
+        firebase.auth().signInWithEmailAndPassword(username, password).then(function(user){
+          uid = firebase.auth().currentUser.uid;
+          console.log(uid);
+          firebase.auth().currentUser.delete().then(function(){
+            firebase.database().ref("users/" + uid).remove()
+            firebase.auth().signInWithEmailAndPassword(companymaild,companypassd).then(function(){
+              console.log(companyuserd);
+              $("#deleteModal").modal("hide");
+            });
+          }).catch(function(){
+            console.log("Error borrar usuario");
+          });
+        }).catch(function(){
+          Swal.fire({
+              icon: "error",
+              title: "Usuario y/o contraseña son incorrectos",
+            });
+        });
       });
     </script>
   </body>
