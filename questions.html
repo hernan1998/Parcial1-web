@@ -139,7 +139,7 @@
           //console.log(uid);
           recentPostsRef.on("value", function (snapshot) {
             var listOp = snapshot.val();
-            var recentPostsRef = firebase.database().ref("cuestionarios/" + listOp.companyid+"/cuesrionario1");
+            var recentPostsRef = firebase.database().ref("cuestionarios/" + listOp.companyid+"/cuestionario1");
               //console.log(uid);
               recentPostsRef.on("value", function (snapshot) {
                 var listQ = snapshot.val();
