@@ -224,6 +224,10 @@
 
                 uid = firebase.auth().currentUser.uid;
               });
+              Swal.fire({
+              icon: "success",
+              title: "login success",
+            });
             window.location = "List.html";
           } else {
             Swal.fire({
