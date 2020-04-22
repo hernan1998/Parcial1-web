@@ -122,7 +122,6 @@
                 uidaux = uid;
                 var opuid = [], opvalue=[];
                 
-
                 var cname = firebase.database().ref("users/" + uid + "/name");
                 cname.on("value", function (snapshot) {
                   document.getElementById("companyname").innerHTML = snapshot.val();
@@ -134,8 +133,6 @@
                     console.log(auxval);
                     createusers(auxval);
                     //infouser();
-                    
-
                 });
                 var cmail = firebase.database().ref("users/" + uid + "/email");
                 cmail.on("value", function (snapshot) {
@@ -145,10 +142,6 @@
                 cpass.on("value", function (snapshot) {
                   passaux = snapshot.val();
                 });
-                
-                
-
-
               } else {
               }
               function createusers(val){
