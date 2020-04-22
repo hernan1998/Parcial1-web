@@ -139,7 +139,8 @@
       //console.log(uid);
       recentPostsRef.on("value", function (snapshot) {
         var listQ = snapshot.val();
-        //console.log(listQ);
+        //console.log(listQ.valueOf());
+        //console.log(Object.keys(listQ).length);
         const demoClasses = document.querySelectorAll("#pregunta");
           demoClasses[0].textContent = listQ.p1;
           demoClasses[1].textContent = listQ.p2;
