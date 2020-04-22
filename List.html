@@ -498,6 +498,17 @@
         const companymaild = emailaux;
         const companyuserd = uidaux;
         const companypassd = passaux;
+        var sum1;
+        var suma1 = firebase
+          .database()
+          .ref("users/" + companyuserd + "/operators");
+        suma1.on("value", function (snapshot) {
+          sum1 = parseInt(snapshot.val()) - 1;
+        });
+        firebase
+          .database()
+          .ref("users/" + companyuserd)
+          .update({ operators: sum1 });
         firebase.auth().signInWithEmailAndPassword(username, password).then(function(user){
           uid = firebase.auth().currentUser.uid;
           console.log(uid);
