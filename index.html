@@ -229,12 +229,20 @@
                 localStorage.uid = firebase.auth().currentUser.uid;
 
                 uid = firebase.auth().currentUser.uid;
+                var typeuser;
+                var looktypeuser = firebase
+                  .database()
+                  .ref("users/" + uid + "/type");
+                looktypeuser.on("value", function (snapshot) {
+                  typeuser = snapshot.val();
+                  console.log(typeuser);
+                  if (typeuser === "0") {
+                    window.location = "List.html";
+                  } else {
+                    window.location = "results.html";
+                  }
+                });
               });
-            Swal.fire({
-              icon: "success",
-              title: "login success",
-            });
-            window.location = "List.html";
           } else {
           }
         });
