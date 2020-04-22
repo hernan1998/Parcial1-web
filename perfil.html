@@ -40,16 +40,18 @@
             <p class="text-left" id="info">Name</p>
           </ul>
           <label>Score</label>
-          <div class="progress" style="height: 20px;">
-            <div
-              class="progress-bar progress-bar-striped progress-bar-animated bg-success"
-              role="progressbar"
-              style="width: 50%;"
-              aria-valuenow="50"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            >
-              50%
+          <div class="progresbar" id="prolist">
+            <div class="progress" style="height: 20px;" id="probar">
+              <div
+                class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                role="progressbar"
+                style="width: 50%;"
+                aria-valuenow="50"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              >
+                50%
+              </div>
             </div>
           </div>
           <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
@@ -108,14 +110,29 @@
           console.log(uid);
           recentPostsRef.on("value", function (snapshot) {
             var listOp = snapshot.val();
+
             var Posts = firebase
               .database()
               .ref("users/" + listOp.companyid + "/name");
+
             Posts.on("value", function (snapshot) {
               const demoClasses = document.querySelectorAll("#info");
               demoClasses[0].textContent = listOp.name;
               demoClasses[1].textContent = listOp.email;
               demoClasses[2].textContent = snapshot.val();
+            });
+            var Posts = firebase
+              .database()
+              .ref("cuestionarios/" + listOp.companyid);
+            Posts.on("value", function (snapshot) {
+              var listQ = snapshot.val();
+              var tam = Object.keys(listQ).length;
+              var itm = document.getElementById("probar");
+              //console.log(val);
+              for (var i = 0; i < tam - 1; i++) {
+                var cln = itm.cloneNode(true);
+                document.getElementById("prolist").appendChild(cln);
+              }
             });
           });
         }
