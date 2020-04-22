@@ -29,7 +29,9 @@
         <div class="card-body">
           <div class="d-flex justify-content-start">
             <img id="user-img" src="assets/user.png" />
-            <h1 class="h3 col-6 mb-3 font-weight-normal" id="info">User Name</h1>
+            <h1 class="h3 col-6 mb-3 font-weight-normal" id="info">
+              User Name
+            </h1>
           </div>
           <ul class="list-group list-group-flush">
             <h5 class="text-left">Email:</h5>
@@ -196,25 +198,23 @@
     <!-------------------Script's Functions -------------------------------------------->
     <script>
       firebase.auth().onAuthStateChanged(function (user) {
-              if (user) {
-                uid = firebase.auth().currentUser.uid;
-                var recentPostsRef = firebase.database().ref('users/'+uid);
-                console.log(uid);
-                recentPostsRef.on("value", function (snapshot) {
-                  var listOp = snapshot.val();
-                    var Posts = firebase.database().ref('users/'+listOp.companyid+'/name');
-                    Posts.on("value", function (snapshot) {
-                    const demoClasses = document.querySelectorAll("#info");
-                    demoClasses[0].textContent = listOp.name;
-                    demoClasses[1].textContent = listOp.email;
-                    demoClasses[2].textContent = snapshot.val();
-                    
-                  });
-                  
-                  
-
-                });
-              }
+        if (user) {
+          uid = firebase.auth().currentUser.uid;
+          var recentPostsRef = firebase.database().ref("users/" + uid);
+          console.log(uid);
+          recentPostsRef.on("value", function (snapshot) {
+            var listOp = snapshot.val();
+            var Posts = firebase
+              .database()
+              .ref("users/" + listOp.companyid + "/name");
+            Posts.on("value", function (snapshot) {
+              const demoClasses = document.querySelectorAll("#info");
+              demoClasses[0].textContent = listOp.name;
+              demoClasses[1].textContent = listOp.email;
+              demoClasses[2].textContent = snapshot.val();
+            });
+          });
+        }
       });
     </script>
     <script></script>
