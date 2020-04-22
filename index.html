@@ -21,7 +21,7 @@
   </head>
 
   <body class="text-center">
-    <form class="needs-validation" novalidate>
+    <form id="loginform" class="needs-validation" novalidate>
       <img
         class="mb-4"
         src="assets/manufacture.png"
@@ -204,7 +204,7 @@
     </script>
     <!-------------------Script's Functions -------------------------------------------->
     <script>
-      $("#login").click(function () {
+      $("#loginform").submit(function () {
         event.preventDefault();
         username = $("#inputEmail").val();
         password = $("#inputPassword").val();
