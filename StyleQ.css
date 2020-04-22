@@ -13,7 +13,7 @@
 }
 }
 body {
-  background-image: url(assets/dark-spade.png);
+  /*background-image: url(assets/dark-spade.png);*/
   background-position: center center;
 background-attachment: scroll;
 }
