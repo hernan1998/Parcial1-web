@@ -109,31 +109,75 @@
       //firebase.analytics();
     </script>
     <script>
-      var emailaux, passaux, uidaux;
-      firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-          uid = firebase.auth().currentUser.uid;
-          uidaux = uid;
-          var cname = firebase.database().ref("users/" + uid + "/name");
-          cname.on("value", function (snapshot) {
-            document.getElementById("companyname").innerHTML = snapshot.val();
-          });
-          var opnum = firebase.database().ref("users/" + uid + "/operators");
-          opnum.on("value", function (snapshot) {
-            document.getElementById("opnumber").innerText =
-              "Operators registered: " + snapshot.val();
-          });
-          var cmail = firebase.database().ref("users/" + uid + "/email");
-          cmail.on("value", function (snapshot) {
-            emailaux = snapshot.val();
-          });
-          var cpass = firebase.database().ref("users/" + uid + "/password");
-          cpass.on("value", function (snapshot) {
-            passaux = snapshot.val();
-          });
-        } else {
-        }
-      });
+            var emailaux, passaux, uidaux, auxval;
+            firebase.auth().onAuthStateChanged(function (user) {
+              if (user) {
+                uid = firebase.auth().currentUser.uid;
+                uidaux = uid;
+                var opuid = [], opvalue=[];
+                
+
+                var cname = firebase.database().ref("users/" + uid + "/name");
+                cname.on("value", function (snapshot) {
+                  document.getElementById("companyname").innerHTML = snapshot.val();
+                });
+                var opnum = firebase.database().ref("users/" + uid + "/operators");
+                opnum.on("value", function (snapshot) {
+                  document.getElementById("opnumber").innerText ="Operators registered: " + snapshot.val();
+                    auxval = snapshot.val();
+                    console.log(auxval);
+                    createusers(auxval);
+                    //infouser();
+                    
+
+                });
+                var cmail = firebase.database().ref("users/" + uid + "/email");
+                cmail.on("value", function (snapshot) {
+                  emailaux = snapshot.val();
+                });
+                var cpass = firebase.database().ref("users/" + uid + "/password");
+                cpass.on("value", function (snapshot) {
+                  passaux = snapshot.val();
+                });
+                
+                
+
+
+              } else {
+              }
+
+              function infouser(){
+                
+                
+              }
+              function createusers(val){
+                var itm = document.getElementById("useritem");
+                //console.log(val);
+                for (var i = 0; i < val-1; i++) {
+                  var cln = itm.cloneNode(true);
+                  document.getElementById("userslist").appendChild(cln);
+                }
+                var recentPostsRef = firebase.database().ref('users').orderByChild('companyid').equalTo(uid);
+                
+                recentPostsRef.on("value", function (snapshot) {
+                  var listOp = snapshot.val();
+                  const demoClasses = document.querySelectorAll(".item-user");
+                  const demo = document.querySelectorAll(".d-block");
+                  $.each(listOp, function( index, value ) {
+                    opuid.push(index);
+                    opvalue.push(value);
+                    //console.log( index + ": " + value.email );
+                  });
+                  //console.log(opvalue[0].name);
+                  for (var i = 0; i < val; i++) {
+                    demoClasses[i].textContent = opvalue[i].name;
+                  }
+                
+                });
+                
+              }
+              
+            });
     </script>
     <script>
       $("#logout").click(function () {
@@ -202,66 +246,6 @@
               class="d-flex justify-content-between align-items-center w-100"
             >
               <strong class="text-gray-dark item-user">Full Name</strong>
-              <a href="results.html">See more</a>
-            </div>
-            <span class="d-block"
-              >Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Phasellus sed leo vel libero hendrerit feugiat.</span
-            >
-          </div>
-        </div>
-        <div class="media text-muted pt-3">
-          <svg
-            class="bd-placeholder-img mr-2 rounded"
-            width="32"
-            height="32"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-            role="img"
-            aria-label="Placeholder: 32x32"
-          >
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#007bff" />
-            <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
-          </svg>
-          <div
-            class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"
-          >
-            <div
-              class="d-flex justify-content-between align-items-center w-100"
-            >
-              <strong class="text-gray-dark">Full Name</strong>
-              <a href="results.html">See more</a>
-            </div>
-            <span class="d-block"
-              >Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Phasellus sed leo vel libero hendrerit feugiat.</span
-            >
-          </div>
-        </div>
-        <div class="media text-muted pt-3">
-          <svg
-            class="bd-placeholder-img mr-2 rounded"
-            width="32"
-            height="32"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-            role="img"
-            aria-label="Placeholder: 32x32"
-          >
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#007bff" />
-            <text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text>
-          </svg>
-          <div
-            class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray"
-          >
-            <div
-              class="d-flex justify-content-between align-items-center w-100"
-            >
-              <strong class="text-gray-dark">Full Name</strong>
               <a href="results.html">See more</a>
             </div>
             <span class="d-block"
@@ -356,12 +340,6 @@
     </div>
 
     <script>
-      var itm = document.getElementById("useritem");
-      var cln = itm.cloneNode(true);
-      document.getElementById("userslist").appendChild(cln);
-      const demoClasses = document.querySelectorAll(".item-user");
-      demoClasses[0].textContent = "Modified";
-
       $("#registeruser").click(function () {
         username = $("#useremail").val();
         password = $("#userpassword").val();
