@@ -21,6 +21,10 @@
     <title >Test</title>
   </head>
   <body>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
       integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -111,8 +115,42 @@
             </div>
     </div>
   </div>
-
-
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDtEyb104TArxyc7hIKnYPrHeh5szPDmUU",
+      authDomain: "parcial-1-clase-web.firebaseapp.com",
+      databaseURL: "https://parcial-1-clase-web.firebaseio.com",
+      projectId: "parcial-1-clase-web",
+      storageBucket: "parcial-1-clase-web.appspot.com",
+      messagingSenderId: "214864287638",
+      appId: "1:214864287638:web:01b04423c8da79423cefb7",
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var db = firebase.firestore();
+    //firebase.analytics();
+  </script>
+<script>
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      uid = firebase.auth().currentUser.uid;
+      var recentPostsRef = firebase.database().ref("cuestionarios/" + uid+"/cuesrionario1");
+      //console.log(uid);
+      recentPostsRef.on("value", function (snapshot) {
+        var listQ = snapshot.val();
+        //console.log(listQ.valueOf());
+        //console.log(Object.keys(listQ).length);
+        const demoClasses = document.querySelectorAll("#pregunta");
+          demoClasses[0].textContent = listQ.p1;
+          demoClasses[1].textContent = listQ.p2;
+          demoClasses[2].textContent = listQ.p3;
+          demoClasses[3].textContent = listQ.p4;
+          demoClasses[4].textContent = listQ.p5;
+      });
+    }
+  });
+</script>
 
 
 
